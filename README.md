@@ -1,4 +1,12 @@
-# Student Expense Tracker
+<h1 align="center">💰 Student Expense Tracker</h1>
+
+<p align="center">
+A Python + MySQL based expense management application
+</p>
+
+<p align="center">
+Record • Manage • Search • Analyze Expenses
+</p>
 
 A command-line based Student Expense Tracker built using **Python and MySQL**.
 
