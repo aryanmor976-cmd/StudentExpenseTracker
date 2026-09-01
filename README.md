@@ -39,13 +39,15 @@ This project allows students to record and manage their daily expenses. It provi
 ---
 ---
 
-## Technologies Used
+## 🛠️ Tech Stack
 
-- **Python 3**
-- **MySQL**
-- **MySQL Connector/Python**
-- **SQL**
-- **VS Code**
+| Technology | Purpose |
+|---|---|
+| 🐍 Python | Application logic and user interaction |
+| 🗄️ MySQL | Database for storing expense records |
+| 🔌 MySQL Connector/Python | Connects Python with MySQL |
+| 🧮 SQL | Data retrieval, filtering, updating, deletion, and analysis |
+| 💻 VS Code | Development environment |
 
 ---
 
