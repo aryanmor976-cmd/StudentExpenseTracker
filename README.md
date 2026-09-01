@@ -22,19 +22,21 @@ This project allows students to record and manage their daily expenses. It provi
 
 ---
 
-## Features
+## ✨ Key Features
 
-- Add a new expense
-- View all expenses
-- Search expenses by category
-- Update an existing expense
-- Delete an expense
-- View total expense summary
-- View category-wise expense summary
-- View monthly expense summary
-- Store expense records permanently using MySQL
-- Simple and user-friendly command-line interface
+| Feature | Description |
+|---|---|
+| ➕ Add Expense | Record a new expense with date, category, description, and amount |
+| 👁️ View Expenses | Display all saved expenses from MySQL |
+| 🔎 Search by Category | Find expenses based on category |
+| ✏️ Update Expense | Modify existing expense information |
+| 🗑️ Delete Expense | Remove an expense from the database |
+| 📊 Expense Summary | Calculate total, count, and average spending |
+| 📁 Category-wise Summary | Analyze spending by category |
+| 📅 Monthly Summary | Analyze expenses by month |
+| 💾 MySQL Database | Permanently store expense records |
 
+---
 ---
 
 ## Technologies Used
