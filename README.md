@@ -8,6 +8,14 @@ A Python + MySQL based expense management application
 Record • Manage • Search • Analyze Expenses
 </p>
 
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+
+</p>
+
 A command-line based Student Expense Tracker built using **Python and MySQL**.
 
 This project allows students to record and manage their daily expenses. It provides features for adding, viewing, searching, updating, and deleting expenses, along with useful expense summaries.
