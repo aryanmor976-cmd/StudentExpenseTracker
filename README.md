@@ -1,53 +1,53 @@
-<h1 align="center">💰 Student Expense Tracker</h1>
+<h1 align="center">Student Expense Tracker</h1>
 
 <p align="center">
-A Python + MySQL based expense management application
+  A Python and MySQL based expense management application
 </p>
 
 <p align="center">
-Record • Manage • Search • Analyze Expenses
+  <img src="https://img.shields.io/badge/Python-3.x-blue" alt="Python">
+  <img src="https://img.shields.io/badge/MySQL-Database-orange" alt="MySQL">
+  <img src="https://img.shields.io/badge/Status-Completed-success" alt="Status">
 </p>
 
-<p align="center">
+---
 
-![Python](https://img.shields.io/badge/Python-3.x-blue)
-![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
-![Status](https://img.shields.io/badge/Status-Completed-success)
+## About the Project
 
-</p>
+Student Expense Tracker is a command-line application developed using Python and MySQL to help students record and manage their daily expenses.
 
-A command-line based Student Expense Tracker built using **Python and MySQL**.
+The application stores expense records in a MySQL database and provides options to add, view, search, update, and delete expenses. It also includes summary features to help understand spending by total amount, category, and month.
 
-This project allows students to record and manage their daily expenses. It provides features for adding, viewing, searching, updating, and deleting expenses, along with useful expense summaries.
+This project was built to practice Python programming, SQL, database connectivity, and CRUD operations in a practical application.
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-| Feature | Description |
-|---|---|
-| ➕ Add Expense | Record a new expense with date, category, description, and amount |
-| 👁️ View Expenses | Display all saved expenses from MySQL |
-| 🔎 Search by Category | Find expenses based on category |
-| ✏️ Update Expense | Modify existing expense information |
-| 🗑️ Delete Expense | Remove an expense from the database |
-| 📊 Expense Summary | Calculate total, count, and average spending |
-| 📁 Category-wise Summary | Analyze spending by category |
-| 📅 Monthly Summary | Analyze expenses by month |
-| 💾 MySQL Database | Permanently store expense records |
+- Add new expense records
+- View all saved expenses
+- Search expenses by category
+- Update existing expenses
+- Delete expenses
+- Calculate total spending
+- Calculate average expense
+- View category-wise spending
+- View monthly expense summary
+- Store data using MySQL
+- Menu-driven command-line interface
 
 ---
----
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology | Purpose |
 |---|---|
-| 🐍 Python | Application logic and user interaction |
-| 🗄️ MySQL | Database for storing expense records |
-| 🔌 MySQL Connector/Python | Connects Python with MySQL |
-| 🧮 SQL | Data retrieval, filtering, updating, deletion, and analysis |
-| 💻 VS Code | Development environment |
+| Python 3 | Application logic and user interaction |
+| MySQL | Persistent storage for expense records |
+| MySQL Connector/Python | Connects the Python application to MySQL |
+| SQL | Data management and expense analysis |
+| python-dotenv | Loads database configuration from environment variables |
+| VS Code | Development environment |
 
 ---
 
@@ -56,156 +56,189 @@ This project allows students to record and manage their daily expenses. It provi
 ```text
 StudentExpenseTracker/
 │
+├── screenshots/
+│   ├── main-menu.png
+│   ├── view-expenses.png
+│   ├── expense-summary.png
+│   ├── category-summary.png
+│   └── monthly-summary.png
+│
 ├── main.py
 ├── database.py
+├── database.sql
+├── requirements.txt
 ├── README.md
-└── __pycache__/
+└── .gitignore
 ```
 
-### main.py
+### File Description
 
-Contains the main application logic and menu system.
+**`main.py`**  
+Contains the main application logic and menu-driven interface.
 
-It handles:
+**`database.py`**  
+Handles the connection between the Python application and MySQL.
 
-- Adding expenses
-- Viewing expenses
-- Searching expenses
-- Updating expenses
-- Deleting expenses
-- Expense summaries
-- Category-wise summaries
-- Monthly summaries
+**`database.sql`**  
+Contains the SQL commands required to create the database and `expenses` table.
 
-### database.py
+**`requirements.txt`**  
+Lists the Python packages required to run the application.
 
-Contains the MySQL database connection code used by the application.
+**`.gitignore`**  
+Prevents sensitive and unnecessary files such as `.env`, Python cache files, and system files from being committed to Git.
+
+**`screenshots/`**  
+Contains screenshots showing the application running and its main features.
 
 ---
 
-## Database
+## Database Schema
 
-The project uses **MySQL** to store expense records.
+The application uses MySQL to store expense records.
 
-### Database Name
+### Database
 
 ```text
 student_expense_tracker
 ```
 
-### Table Name
+### Table: `expenses`
+
+| Column | Data Type | Description |
+|---|---|---|
+| `id` | INT | Unique identifier for each expense |
+| `expense_date` | DATE | Date on which the expense occurred |
+| `category` | VARCHAR(100) | Category of the expense |
+| `description` | VARCHAR(255) | Description of the expense |
+| `amount` | DECIMAL(10,2) | Amount spent |
+
+### Database Structure
 
 ```text
-expenses
+student_expense_tracker
+        │
+        └── expenses
+              ├── id
+              ├── expense_date
+              ├── category
+              ├── description
+              └── amount
 ```
 
-### Expenses Table Fields
+### SQL Schema
 
-| Field | Description |
-|---|---|
-| `id` | Unique ID of the expense |
-| `expense_date` | Date of the expense |
-| `category` | Category of the expense |
-| `description` | Description of the expense |
-| `amount` | Amount spent |
-
----
-
-# How to Run
-
-## 1. Install MySQL Connector
-
-Open the terminal in VS Code and run:
-
-```bash
-pip3 install mysql-connector-python
-```
-
----
-
-## 2. Open MySQL
-
-Open the MySQL command-line client.
-
-On macOS, you can use:
-
-```bash
-/usr/local/mysql/bin/mysql -u root -p
-```
-
-Enter your MySQL password when prompted.
-
----
-
-## 3. Create the Database
-
-After entering MySQL, create the database:
+The database structure is included in `database.sql`.
 
 ```sql
-CREATE DATABASE student_expense_tracker;
-```
+CREATE DATABASE IF NOT EXISTS student_expense_tracker;
 
-Select the database:
-
-```sql
 USE student_expense_tracker;
-```
 
----
-
-## 4. Create the Expenses Table
-
-Run the following SQL command:
-
-```sql
-CREATE TABLE expenses (
+CREATE TABLE IF NOT EXISTS expenses (
     id INT AUTO_INCREMENT PRIMARY KEY,
     expense_date DATE NOT NULL,
-    category VARCHAR(50) NOT NULL,
+    category VARCHAR(100) NOT NULL,
     description VARCHAR(255),
-    amount DECIMAL(10,2) NOT NULL
+    amount DECIMAL(10, 2) NOT NULL
 );
 ```
 
 ---
 
-## 5. Configure the Database Connection
+## CRUD Operations
 
-Open the `database.py` file.
+The application implements the four basic database operations:
 
-The connection should contain your MySQL username, password, and database name.
+| Operation | Application Feature |
+|---|---|
+| Create | Add Expense |
+| Read | View All Expenses / Search by Category |
+| Update | Update Expense |
+| Delete | Delete Expense |
 
-Example:
+In addition to CRUD operations, SQL aggregation is used for expense analysis:
 
-```python
-import mysql.connector
-
-def create_connection():
-    connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="YOUR_MYSQL_PASSWORD",
-        database="student_expense_tracker"
-    )
-
-    return connection
-```
-
-Replace `YOUR_MYSQL_PASSWORD` with your own MySQL password.
-
-**Never upload your real MySQL password to GitHub.**
+- `SUM()` for total spending
+- `AVG()` for average spending
+- `COUNT()` for the number of expenses
+- `GROUP BY` for category-wise summaries
+- Date-based filtering for monthly analysis
 
 ---
 
-## 6. Run the Application
+## How to Run
 
-Open the terminal inside the project folder and run:
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/aryanmor976-cmd/StudentExpenseTracker.git
+```
+
+Move into the project directory:
+
+```bash
+cd StudentExpenseTracker
+```
+
+### 2. Install Dependencies
+
+Install the required Python packages:
+
+```bash
+pip3 install -r requirements.txt
+```
+
+### 3. Configure the Database
+
+Make sure MySQL is installed and running.
+
+Create a `.env` file in the project directory:
+
+```text
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=YOUR_MYSQL_PASSWORD
+DB_NAME=student_expense_tracker
+```
+
+Replace `YOUR_MYSQL_PASSWORD` with your local MySQL password.
+
+> The `.env` file should never be committed to GitHub because it contains private database credentials.
+
+### 4. Create the Database
+
+The required database and table can be created using the included `database.sql` file.
+
+Alternatively, run:
+
+```sql
+CREATE DATABASE IF NOT EXISTS student_expense_tracker;
+
+USE student_expense_tracker;
+
+CREATE TABLE IF NOT EXISTS expenses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    expense_date DATE NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    description VARCHAR(255),
+    amount DECIMAL(10, 2) NOT NULL
+);
+```
+
+### 5. Start the Application
+
+Run:
 
 ```bash
 python3 main.py
 ```
 
-The application will display the following menu:
+---
+
+## Application Menu
+
+When the application starts, the following menu is displayed:
 
 ```text
 ==============================
@@ -225,22 +258,18 @@ The application will display the following menu:
 
 ---
 
-# How to Use
+## How It Works
 
-## 1. Add Expense
+### Add Expense
 
-Select option:
-
-```text
-1
-```
-
-Enter the required information:
+The user enters:
 
 - Date
 - Category
 - Description
 - Amount
+
+The information is inserted into the MySQL `expenses` table.
 
 Example:
 
@@ -251,243 +280,99 @@ Enter description: Lunch
 Enter amount: 120
 ```
 
-The expense will be stored in the MySQL database.
+### View Expenses
 
----
+Displays all expense records stored in the database.
 
-## 2. View All Expenses
+### Search by Category
 
-Select option:
+Allows the user to search for expenses belonging to a particular category.
 
-```text
-2
-```
+### Update Expense
 
-The application displays all saved expenses.
+The user enters an expense ID and can modify its date, category, description, and amount.
 
-Example:
+### Delete Expense
 
-```text
-========== ALL EXPENSES ==========
+The user enters an expense ID to remove the corresponding record from the database.
 
-ID | Date       | Category    | Description       | Amount
--------------------------------------------------------------
-1  | 2026-09-01 | Food        | Lunch             | ₹120.00
-```
+### Expense Summary
 
----
-
-## 3. Search by Category
-
-Select option:
-
-```text
-3
-```
-
-Enter a category such as:
-
-```text
-Food
-```
-
-The application displays all expenses belonging to that category.
-
----
-
-## 4. Update Expense
-
-Select option:
-
-```text
-4
-```
-
-Enter the ID of the expense you want to update.
-
-You can update:
-
-- Date
-- Category
-- Description
-- Amount
-
-The updated information is saved in the MySQL database.
-
----
-
-## 5. Delete Expense
-
-Select option:
-
-```text
-5
-```
-
-Enter the ID of the expense you want to delete.
-
-The selected expense will be removed from the database.
-
----
-
-## 6. Expense Summary
-
-Select option:
-
-```text
-6
-```
-
-The application displays:
+Calculates:
 
 - Total number of expenses
 - Total amount spent
 - Average expense
 
-Example:
+### Category-wise Summary
 
-```text
-========== EXPENSE SUMMARY ==========
+Groups expenses by category and calculates the total amount spent in each category.
 
-Total number of expenses : 5
-Total amount spent       : ₹1250.00
-Average expense          : ₹250.00
-```
+### Monthly Summary
+
+Calculates expense information based on the selected month.
 
 ---
 
-## 7. Category-wise Summary
+## Application Screenshots
 
-Select option:
+### Main Menu
 
-```text
-7
-```
+![Main Menu](screenshots/main-menu.png)
 
-The application calculates the total amount spent in each category.
+### View All Expenses
 
-Example:
+![View All Expenses](screenshots/view-expenses.png)
 
-```text
-========== CATEGORY SUMMARY ==========
+### Expense Summary
 
-Food             ₹570.00
-Transport       ₹1004.00
-```
+![Expense Summary](screenshots/expense-summary.png)
 
----
+### Category-wise Summary
 
-## 8. Monthly Summary
+![Category-wise Summary](screenshots/category-summary.png)
 
-Select option:
+### Monthly Summary
 
-```text
-8
-```
-
-The application displays the total expenses for each month.
-
-This helps the user understand monthly spending patterns.
+![Monthly Summary](screenshots/monthly-summary.png)
 
 ---
 
-## 9. Exit
+## What I Learned
 
-Select option:
+This project helped me gain practical experience with:
 
-```text
-9
-```
-
-The application asks for confirmation before exiting.
-
-Example:
-
-```text
-Are you sure you want to exit? (y/n):
-```
-
----
-
-# CRUD Operations
-
-This project implements the four basic database operations:
-
-| Operation | Feature |
-|---|---|
-| **Create** | Add Expense |
-| **Read** | View and Search Expenses |
-| **Update** | Update Expense |
-| **Delete** | Delete Expense |
-
----
-
-# Application Workflow
-
-```text
-             Student Expense Tracker
-                       │
-                       ▼
-                Main Menu
-                       │
-        ┌──────────────┼──────────────┐
-        ▼              ▼              ▼
-   Add Expense    View Expenses   Search Expense
-        │              │              │
-        └──────────────┼──────────────┘
-                       ▼
-                 MySQL Database
-                       │
-        ┌──────────────┼──────────────┐
-        ▼              ▼              ▼
-      Update         Delete        Summary
-                                     │
-                          ┌──────────┼──────────┐
-                          ▼          ▼          ▼
-                       Overall   Category    Monthly
-```
-
----
-
-# Learning Outcomes
-
-Through this project, I learned and practiced:
-
-- Python programming
-- Functions
-- Conditional statements
-- Loops
+- Python functions and program structure
+- Conditional statements and loops
 - User input handling
 - SQL queries
-- MySQL database management
+- MySQL database design
 - Python-MySQL connectivity
 - CRUD operations
-- Data retrieval
-- Data updating and deletion
+- Data retrieval and filtering
 - SQL aggregation functions
 - Grouping data using SQL
-- Building a command-line application
+- Environment-based configuration
+- Building a menu-driven application
 
 ---
 
-# Future Improvements
+## Future Improvements
 
-The project can be further improved by adding:
+Some possible improvements for future versions include:
 
-- Graphical User Interface (GUI)
-- User login and authentication
-- Student profile management
-- Expense charts and graphs
-- Budget tracking
-- Monthly budget limits
-- Budget alerts
-- Export expenses to CSV or Excel
+- Graphical user interface
+- User authentication
+- Personal student profiles
+- Budget limits and alerts
+- Expense charts and visualizations
+- CSV/Excel export
 - Web-based version
 - Mobile application
 
 ---
 
-# Author
+## Author
 
 **Aryan Mor**
 
@@ -496,36 +381,6 @@ Specialization: Machine Learning
 
 ---
 
-# Project Purpose
+## License
 
-This project was developed as a practical learning project to understand how **Python applications interact with relational databases using MySQL**.
-
-It demonstrates the implementation of database operations through a simple and practical student expense management system.
-
----
-
-# License
-
-This project is created for educational and learning purposes.
-
-## 📸 Application Screenshots
-
-### 1. Main Menu
-
-![Main Menu](screenshots/main-menu.png)
-
-### 2. View All Expenses
-
-![View All Expenses](screenshots/view-expenses.png)
-
-### 3. Expense Summary
-
-![Expense Summary](screenshots/expense-summary.png)
-
-### 4. Category-wise Summary
-
-![Category-wise Summary](screenshots/category-summary.png)
-
-### 5. Monthly Summary
-
-![Monthly Summary](screenshots/monthly-summary.png)
+This project was created for educational and portfolio purposes.
