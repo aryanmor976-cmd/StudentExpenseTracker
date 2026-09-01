@@ -487,3 +487,25 @@ It demonstrates the implementation of database operations through a simple and p
 # License
 
 This project is created for educational and learning purposes.
+
+## 📸 Application Screenshots
+
+### 1. Main Menu
+
+![Main Menu](screenshots/main-menu.png)
+
+### 2. View All Expenses
+
+![View All Expenses](screenshots/view-expenses.png)
+
+### 3. Expense Summary
+
+![Expense Summary](screenshots/expense-summary.png)
+
+### 4. Category-wise Summary
+
+![Category-wise Summary](screenshots/category-summary.png)
+
+### 5. Monthly Summary
+
+![Monthly Summary](screenshots/monthly-summary.png)
